@@ -9,7 +9,7 @@ let seed = 0;
 const now = Date.now();
 
 function getUuid() {
-  return `beeNotification_${now}_${seed++}`;
+  return `uNotification_${now}_${seed++}`;
 }
 
 var propTypes = {
