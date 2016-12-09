@@ -7,16 +7,15 @@ const propTypes = {
     children: PropTypes.any,
 };
 
+function noop() {}
+
 const defaultProps = {
-    onEnd() {
-    },
-    onClose() {
-    },
+    onEnd: noop,
+    onClose: noop,
     duration: 1.5,
     style: {
       right: '50%',
-    },
-    clsPrefix: ""
+    }
 }
 
 class Notice extends React.Component {
@@ -68,7 +67,10 @@ class Notice extends React.Component {
         }
       </div>
     );
-  },
+  }
 };
+
+Notice.PropTypes = PropTypes;
+Notice.defaultProps = defaultProps;
 
 export default Notice;

@@ -1,3 +1,3 @@
-import Demo from './NotificationDemo';
+import demo from './NotificationDemo';
 import ReactDOM from 'react-dom';
-ReactDOM.render(<Demo/>, document.getElementById('tinperBeeDemo'));
+ReactDOM.render(demo(), document.getElementById('tinperBeeDemo'));

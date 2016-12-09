@@ -1,7 +1,8 @@
-import 'rc-notification/assets/index.less';
-import Notification from 'rc-notification';
+
+import Notification from '../src';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Button from 'bee-button';
 const notification = Notification.newInstance({});
 
 function simpleFn() {
@@ -40,18 +41,22 @@ function manualClose() {
   notification.notice({
     content: <div>
       <p>click below button to close</p>
-      <button onClick={close.bind(null, key)}>close</button>
+      <Button onClick={close.bind(null, key)}>close</Button>
     </div>,
     key,
     duration: null,
   });
 }
 
-ReactDOM.render(<div>
-  <div>
-    <button onClick={simpleFn}>simple show</button>
-    <button onClick={durationFn}>duration=0</button>
-    <button onClick={closableFn}>closable</button>
-    <button onClick={manualClose}>controlled close</button>
-  </div>
-</div>, document.getElementById('__react-content'));
+function demo () {
+    return (
+        <div>
+          <Button onClick={simpleFn}>simple show</Button>
+          <Button onClick={durationFn}>duration=0</Button>
+          <Button onClick={closableFn}>closable</Button>
+          <Button onClick={manualClose}>controlled close</Button>
+        </div>
+    )
+};
+
+ export default demo;
