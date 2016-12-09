@@ -19,6 +19,7 @@ var propTypes = {
     clsPrefix: PropTypes.string,
     transition: elementType,
     style: PropTypes.object,
+    position: PropTypes.oneOf(['topRight', 'bottomRight']),
     /**
      * 延迟时间
      */
@@ -34,10 +35,7 @@ var propTypes = {
 var defaultProps = {
     clsPrefix: 'u-notification',
     transition: Fade,
-    style: {
-      top: 65,
-      left: '50%',
-    }
+    position: 'topRight'
 }
 
 class Notification extends Component {
@@ -79,6 +77,7 @@ class Notification extends Component {
         clsPrefix,
         className,
         transition: Transition,
+        position,
         onExit,
         onExiting,
         onEnter,
@@ -102,6 +101,9 @@ class Notification extends Component {
       [clsPrefix]: 1,
       [className]: !!className,
     };
+    if(position) {
+        classes[`${clsPrefix}-${position}`] = true;
+    }
 
     return (
       <div className={classnames(classes)} style={style}>

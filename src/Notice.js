@@ -5,6 +5,7 @@ const propTypes = {
     duration: PropTypes.number,
     onClose: PropTypes.func,
     children: PropTypes.any,
+    color: PropTypes.oneOf(['success', 'warning', 'danger', 'info', 'dark'])
 };
 
 function noop() {}
@@ -12,10 +13,8 @@ function noop() {}
 const defaultProps = {
     onEnd: noop,
     onClose: noop,
-    duration: 1.5,
-    style: {
-      right: '50%',
-    }
+    duration: 4.5,
+    closable: true
 }
 
 class Notice extends React.Component {
@@ -50,17 +49,20 @@ class Notice extends React.Component {
   }
 
   render() {
-    const props = this.props;
-    const componentClass = `${props.clsPrefix}-notice`;
-    const className = {
+    const { closable, clsPrefix, className, style, children, color } = this.props;
+    const componentClass = `${clsPrefix}-notice`;
+    const classes = {
       [`${componentClass}`]: 1,
-      [`${componentClass}-closable`]: props.closable,
-      [props.className]: !!props.className,
+      [`${componentClass}-closable`]: closable,
+      [className]: !!className,
     };
+    if(color) {
+        classes[`${componentClass}-${color}`] = true;
+    }
     return (
-      <div className={classNames(className)} style={props.style}>
-        <div className={`${componentClass}-content`}>{props.children}</div>
-        {props.closable ?
+      <div className={classNames(classes)} style={style}>
+        <div className={`${componentClass}-content`}>{children}</div>
+        {closable ?
           <a tabIndex="0" onClick={this.close} className={`${componentClass}-close`}>
             <span className={`${componentClass}-close-x`}></span>
           </a> : null
