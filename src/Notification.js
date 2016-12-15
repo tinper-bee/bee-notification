@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+ import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
 //import Animate from 'rc-animate';
 import createChainedFunction from 'tinper-bee-core/lib/createChainedFunction';
@@ -19,7 +19,7 @@ var propTypes = {
     clsPrefix: PropTypes.string,
     transition: elementType,
     style: PropTypes.object,
-    position: PropTypes.oneOf(['topRight', 'bottomRight']),
+    position: PropTypes.oneOf(['topRight', 'bottomRight', '']),
     /**
      * 延迟时间
      */
@@ -102,7 +102,7 @@ class Notification extends Component {
       [className]: !!className,
     };
     if(position) {
-        classes[`${clsPrefix}-${position}`] = true;
+        classes[`${clsPrefix}-${position}`] = !! position;
     }
 
     return (

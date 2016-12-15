@@ -1,0 +1,123 @@
+@charset "UTF-8";
+/*  IMAGES  */
+/* 默认颜色 */
+/* 客户化 */
+/* 波纹效果 */
+/*贝塞尔曲线动画 */
+/* 阴影 */
+/* ==========  文本字体  ========== */
+/* 控件 */
+/* 不同背景下对应的文字颜色 */
+/* UButton */
+/* UText */
+/*  Navlayout  */
+/* gridlayout */
+/* menu */
+/* Alert */
+/* Checkbox */
+/*  Radio  */
+/* Switch  */
+/* loading */
+/* datetimepicker */
+/* message */
+/* DATA TABLE */
+/* tooltip*/
+/* 进度条 */
+/* ==========  Content Tabs  ========== */
+/* CARD */
+/* Card dimensions */
+/* Cover image */
+/* ==========  Card  ========== */
+/* ============ Forms ============*/
+/* BADGE */
+/* Typography */
+/* Shadows */
+/* Animations */
+.u-notification {
+  position: fixed;
+  z-index: 1000; }
+  .u-notification-topRight {
+    top: 65px;
+    right: 10%; }
+  .u-notification-bottomRight {
+    bottom: 165px;
+    right: 10%; }
+  .u-notification-notice {
+    padding: 7px 20px 7px 10px;
+    border-radius: 3px 3px;
+    border: 1px solid #999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 0px solid transparent;
+    background: #fff;
+    display: block;
+    width: auto;
+    line-height: 1.5;
+    vertical-align: middle;
+    position: relative;
+    margin: 10px 0; }
+    .u-notification-notice-closable {
+      padding-right: 20px; }
+    .u-notification-notice-close {
+      position: absolute;
+      right: 5px;
+      top: 3px;
+      color: #000;
+      cursor: pointer;
+      outline: none;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      text-shadow: 0 1px 0 #fff;
+      filter: alpha(opacity=20);
+      opacity: .2;
+      text-decoration: none; }
+      .u-notification-notice-close-x:after {
+        content: '×'; }
+      .u-notification-notice-close:hover {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        text-decoration: none; }
+    .u-notification-notice-success {
+      background-color: rgb(76,175,80);
+      color: #fff; }
+    .u-notification-notice-warning {
+      background-color: rgb(255,152,0);
+      color: #fff; }
+    .u-notification-notice-info {
+      background-color: rgb(0,188,212);
+      color: #fff; }
+    .u-notification-notice-danger {
+      background-color: rgb(244,67,54);
+      color: #fff; }
+    .u-notification-notice-dark {
+      background-color: rgb(97,97,97);
+      color: #fff; }
+  .u-notification-fade-enter {
+    opacity: 0;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+    animation-play-state: paused; }
+  .u-notification-fade-leave {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+    animation-play-state: paused; }
+  .u-notification-fade-enter + .u-notification-fade-enter-active {
+    animation-name: rcNotificationFadeIn;
+    animation-play-state: running; }
+  .u-notification-fade-leave + .u-notification-fade-leave-active {
+    animation-name: rcDialogFadeOut;
+    animation-play-state: running; }
+
+@keyframes uNotificationFadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes uDialogFadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
