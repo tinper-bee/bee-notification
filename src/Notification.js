@@ -35,7 +35,8 @@ var propTypes = {
 var defaultProps = {
     clsPrefix: 'u-notification',
     transition: Fade,
-    position: 'topRight'
+    position: 'topRight',
+    show: true
 }
 
 class Notification extends Component {

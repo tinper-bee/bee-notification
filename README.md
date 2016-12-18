@@ -14,20 +14,72 @@
 
 react bee-notification component for tinper-bee
 
-some description...
+Notification通知不同于操作类型的信息反馈，是一种主动推送的信息。
 
 ## 使用方法
 
 ```js
+const notification = Notification.newInstance({position: 'bottomRight'});
+
+class Demo1 extends Component {
+
+    simpleFn() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+      });
+    }
+    render () {
+
+        return (
+            <div className="demoPadding">
+                <Button onClick={this.simpleFn}>simple show</Button>
+            </div>
+        )
+    }
+}
 
 ```
 
-
+#### 样式引入
+- 可以使用link引入build目录下Notification.css
+```
+<link rel="stylesheet" href="./node_modules/bee-notification/build/Notification.css">
+```
+- 可以在js中import样式
+```js
+import "./node_modules/bee-notification/src/Notification.scss"
+//或是
+import "./node_modules/bee-notification/build/Notification.css"
+```
 
 ## API
 
+#### Notice
+
 |参数|说明|类型|默认值|
 |:--|:---:|:--:|---:|
+|duration|显示时间|number|4.5|
+|onClose|关闭时触发的钩子函数|function|-|
+|closable|是否可手动关闭|boolean|true|
+|color|显示颜色|success/info/danger/warning/dark|-|
+
+#### Notification
+
+|参数|说明|类型|默认值|
+|:--|:---:|:--:|---:|
+|show|是否显示|boolean|true|
+|transition|动画|element|Fade|
+|position|显示位置|topRight/BottomRight|topRight|
+|timeout|延迟时间|number|-|
+|onEnter|开始显示时的钩子函数|function|-|
+|onEntering|显示时的钩子函数|function|-|
+|onEntered|显示完成后的钩子函数|function|-|
+|onExit|隐藏开始时的钩子函数|function|-|
+|onExiting|隐藏进行时的钩子函数|function|-|
+|onExited|隐藏结束时的钩子函数|function|-|
 
 #### 开发调试
 

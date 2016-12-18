@@ -1,7 +1,7 @@
 /**
  *
- * @title 默认按钮
- * @description 基础按钮
+ * @title 默认提醒
+ * @description
  *
  */
 
@@ -11,14 +11,12 @@
 class Demo1 extends Component {
 
     simpleFn() {
-          notification.notice({
-            content: <span>simple show</span>,
-            onClose() {
-              console.log('simple close');
-            },
-            color: 'success'
-          });
-
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+      });
     }
     render () {
 

@@ -1,22 +1,65 @@
 /**
  *
- * @title 不同形状的按钮
- * @description 通过`shape`属性控制按钮大小
+ * @title 不同颜色的提醒
+ * @description 通过color属性来设置提醒的颜色
  *
  */
 
 class Demo2 extends Component {
+
+ simpleFnsuccess() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+        color: 'success'
+      });
+    }
+ simpleFndark() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+        color: 'dark'
+      });
+    }
+simpleFnwarning() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+        color: 'warning'
+      });
+    }
+ simpleFninfo() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+        color: 'info'
+      });
+    }
+ simpleFndanger() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+        color: 'danger'
+      });
+    }
     render () {
         return (
             <div className="demoPadding">
-            <Col md={6} xs={12}>
-                <Button shape="block" colors="primary">块状按钮</Button>
-            </Col>
-            <Col md={6} xs={12}>
-            <Button shape="round" colors="primary">圆形边按钮</Button>
-            <Button shape="squared" colors="warning">方形按钮</Button>
-            <Button shape="floating" colors="primary">圆形按钮</Button>
-            </Col>
+            <Button onClick={this.simpleFnsuccess} colors="success">success show</Button>
+            <Button onClick={this.simpleFninfo} colors="info">info show</Button>
+            <Button onClick={this.simpleFndark} style={{ background: "rgb(97,97,97)", color: "#fff"}}>dark show</Button>
+            <Button onClick={this.simpleFndanger} colors="danger">danger show</Button>
+            <Button onClick={this.simpleFnwarning} colors="warning">warning show</Button>
             </div>
         )
     }

@@ -14,8 +14,8 @@ const CARETUP = <i className="uf uf-chevronarrowup"></i>;
 
 /**
  *
- * @title 默认按钮
- * @description 基础按钮
+ * @title 默认提醒
+ * @description
  *
  */
 
@@ -25,14 +25,12 @@ const CARETUP = <i className="uf uf-chevronarrowup"></i>;
 class Demo1 extends Component {
 
     simpleFn() {
-          notification.notice({
-            content: <span>simple show</span>,
-            onClose() {
-              console.log('simple close');
-            },
-            color: 'success'
-          });
-
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+      });
     }
     render () {
 
@@ -45,93 +43,119 @@ class Demo1 extends Component {
 }
 /**
  *
- * @title 不同形状的按钮
- * @description 通过`shape`属性控制按钮大小
+ * @title 不同颜色的提醒
+ * @description 通过color属性来设置提醒的颜色
  *
  */
 
 class Demo2 extends Component {
+
+ simpleFnsuccess() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+        color: 'success'
+      });
+    }
+ simpleFndark() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+        color: 'dark'
+      });
+    }
+simpleFnwarning() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+        color: 'warning'
+      });
+    }
+ simpleFninfo() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+        color: 'info'
+      });
+    }
+ simpleFndanger() {
+      notification.notice({
+        content: <span>simple show</span>,
+        onClose() {
+          console.log('simple close');
+        },
+        color: 'danger'
+      });
+    }
     render () {
         return (
             <div className="demoPadding">
-            <Col md={6} xs={12}>
-                <Button shape="block" colors="primary">块状按钮</Button>
-            </Col>
-            <Col md={6} xs={12}>
-            <Button shape="round" colors="primary">圆形边按钮</Button>
-            <Button shape="squared" colors="warning">方形按钮</Button>
-            <Button shape="floating" colors="primary">圆形按钮</Button>
-            </Col>
+            <Button onClick={this.simpleFnsuccess} colors="success">success show</Button>
+            <Button onClick={this.simpleFninfo} colors="info">info show</Button>
+            <Button onClick={this.simpleFndark} style={{ background: "rgb(97,97,97)", color: "#fff"}}>dark show</Button>
+            <Button onClick={this.simpleFndanger} colors="danger">danger show</Button>
+            <Button onClick={this.simpleFnwarning} colors="warning">warning show</Button>
             </div>
         )
     }
 }
 /**
  *
- * @title 不同颜色的按钮
- * @description 通过`colors`属性控制按钮颜色
+ * @title 可控制的提醒
+ * @description 通过设置duration:6来设置时间，null为自动控制
  *
  */
 
 class Demo3 extends Component {
-
-    render () {
-        return (
-            <div className="demoPadding">
-                    <Button colors="success">success</Button>
-                    <Button colors="info">info</Button>
-                    <Button colors="warning">warning</Button>
-                    <Button colors="danger">danger</Button>
-                <div className="divider"></div>
-                    <Button shape="border" colors="success">success</Button>
-                    <Button shape="border" colors="warning">info</Button>
-                    <Button shape="border" colors="info">warning</Button>
-                    <Button shape="border" colors="danger">danger</Button>
-            </div>
-        )
-    }
-}
-/**
- *
- * @title 不同大小的按钮
- * @description 通过`size`属性控制按钮大小
- *
- */
-
-class Demo4 extends Component {
-    render () {
-        return (
-            <div className="demoPadding">
-                <Button size="sm" colors="primary">小按钮</Button>
-                <Button colors="primary">默认</Button>
-                <Button size="lg" colors="primary">大按钮</Button>
-                <Button size="xg" colors="primary">巨大按钮</Button>
-            </div>
-        )
-    }
-}
-/**
- *
- * @title 事件按钮
- * @description 点击按钮触发事件
- *
- */
-
-class Demo5 extends Component {
     constructor(props){
         super(props);
+        this.manualClose = this.manualClose.bind(this);
     }
-    handleClick(){
-        alert("谢谢你点我")
+ closableFn() {
+      notification.notice({
+        content: <span>closdisable but autoclose</span>,
+        duration: null,
+        onClose() {
+          console.log('closable close');
+        },
+        duration: 6,
+        closable: false
+      });
     }
 
+ close(key) {
+      notification.removeNotice(key);
+    }
+
+ manualClose() {
+      const key = Date.now();
+      notification.notice({
+        content: <div>
+          <p>click below button to close</p>
+          <Button onClick={this.close.bind(this, key)}>close</Button>
+        </div>,
+        key,
+        duration: null,
+      });
+    }
     render () {
         return (
-                <Button colors="primary" onClick={ this.handleClick }>事件按钮</Button>
+            <div className="demoPadding">
+            <Button colors="primary" onClick={this.closableFn}>closdisable but autoclose</Button>
+            <Button colors="primary" onClick={this.manualClose}>controlled close</Button>
+            </div>
         )
     }
 }
-var DemoArray = [{"example":<Demo1 />,"title":" 默认按钮","code":"/**\r\n *\r\n * @title 默认按钮\r\n * @description 基础按钮\r\n *\r\n */\r\n\r\n\r\n\r\n\r\nclass Demo1 extends Component {\r\n\r\n    simpleFn() {\r\n          notification.notice({\r\n            content: <span>simple show</span>,\r\n            onClose() {\r\n              console.log('simple close');\r\n            },\r\n            color: 'success'\r\n          });\r\n\r\n    }\r\n    render () {\r\n\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button onClick={this.simpleFn}>simple show</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n","desc":" 基础按钮"},{"example":<Demo2 />,"title":" 不同形状的按钮","code":"/**\r\n *\r\n * @title 不同形状的按钮\r\n * @description 通过`shape`属性控制按钮大小\r\n *\r\n */\r\n\r\nclass Demo2 extends Component {\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n            <Col md={6} xs={12}>\r\n                <Button shape=\"block\" colors=\"primary\">块状按钮</Button>\r\n            </Col>\r\n            <Col md={6} xs={12}>\r\n            <Button shape=\"round\" colors=\"primary\">圆形边按钮</Button>\r\n            <Button shape=\"squared\" colors=\"warning\">方形按钮</Button>\r\n            <Button shape=\"floating\" colors=\"primary\">圆形按钮</Button>\r\n            </Col>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n","desc":" 通过`shape`属性控制按钮大小"},{"example":<Demo3 />,"title":" 不同颜色的按钮","code":"/**\r\n *\r\n * @title 不同颜色的按钮\r\n * @description 通过`colors`属性控制按钮颜色\r\n *\r\n */\r\n\r\nclass Demo3 extends Component {\r\n\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                    <Button colors=\"success\">success</Button>\r\n                    <Button colors=\"info\">info</Button>\r\n                    <Button colors=\"warning\">warning</Button>\r\n                    <Button colors=\"danger\">danger</Button>\r\n                <div className=\"divider\"></div>\r\n                    <Button shape=\"border\" colors=\"success\">success</Button>\r\n                    <Button shape=\"border\" colors=\"warning\">info</Button>\r\n                    <Button shape=\"border\" colors=\"info\">warning</Button>\r\n                    <Button shape=\"border\" colors=\"danger\">danger</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n","desc":" 通过`colors`属性控制按钮颜色"},{"example":<Demo4 />,"title":" 不同大小的按钮","code":"/**\r\n *\r\n * @title 不同大小的按钮\r\n * @description 通过`size`属性控制按钮大小\r\n *\r\n */\r\n\r\nclass Demo4 extends Component {\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button size=\"sm\" colors=\"primary\">小按钮</Button>\r\n                <Button colors=\"primary\">默认</Button>\r\n                <Button size=\"lg\" colors=\"primary\">大按钮</Button>\r\n                <Button size=\"xg\" colors=\"primary\">巨大按钮</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n","desc":" 通过`size`属性控制按钮大小"},{"example":<Demo5 />,"title":" 事件按钮","code":"/**\r\n *\r\n * @title 事件按钮\r\n * @description 点击按钮触发事件\r\n *\r\n */\r\n\r\nclass Demo5 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n    }\r\n    handleClick(){\r\n        alert(\"谢谢你点我\")\r\n    }\r\n\r\n    render () {\r\n        return (\r\n                <Button colors=\"primary\" onClick={ this.handleClick }>事件按钮</Button>\r\n        )\r\n    }\r\n}\r\n","desc":" 点击按钮触发事件"}]
+var DemoArray = [{"example":<Demo1 />,"title":" 默认提醒","code":"/**\n *\n * @title 默认提醒\n * @description\n *\n */\n\n\n\n\nclass Demo1 extends Component {\n\n    simpleFn() {\n      notification.notice({\n        content: <span>simple show</span>,\n        onClose() {\n          console.log('simple close');\n        },\n      });\n    }\n    render () {\n\n        return (\n            <div className=\"demoPadding\">\n                <Button onClick={this.simpleFn}>simple show</Button>\n            </div>\n        )\n    }\n}\n","desc":""},{"example":<Demo2 />,"title":" 不同颜色的提醒","code":"/**\n *\n * @title 不同颜色的提醒\n * @description 通过color属性来设置提醒的颜色\n *\n */\n\nclass Demo2 extends Component {\n\n simpleFnsuccess() {\n      notification.notice({\n        content: <span>simple show</span>,\n        onClose() {\n          console.log('simple close');\n        },\n        color: 'success'\n      });\n    }\n simpleFndark() {\n      notification.notice({\n        content: <span>simple show</span>,\n        onClose() {\n          console.log('simple close');\n        },\n        color: 'dark'\n      });\n    }\nsimpleFnwarning() {\n      notification.notice({\n        content: <span>simple show</span>,\n        onClose() {\n          console.log('simple close');\n        },\n        color: 'warning'\n      });\n    }\n simpleFninfo() {\n      notification.notice({\n        content: <span>simple show</span>,\n        onClose() {\n          console.log('simple close');\n        },\n        color: 'info'\n      });\n    }\n simpleFndanger() {\n      notification.notice({\n        content: <span>simple show</span>,\n        onClose() {\n          console.log('simple close');\n        },\n        color: 'danger'\n      });\n    }\n    render () {\n        return (\n            <div className=\"demoPadding\">\n            <Button onClick={this.simpleFnsuccess} colors=\"success\">success show</Button>\n            <Button onClick={this.simpleFninfo} colors=\"info\">info show</Button>\n            <Button onClick={this.simpleFndark} style={{ background: \"rgb(97,97,97)\", color: \"#fff\"}}>dark show</Button>\n            <Button onClick={this.simpleFndanger} colors=\"danger\">danger show</Button>\n            <Button onClick={this.simpleFnwarning} colors=\"warning\">warning show</Button>\n            </div>\n        )\n    }\n}\n","desc":" 通过color属性来设置提醒的颜色"},{"example":<Demo3 />,"title":" 可控制的提醒","code":"/**\n *\n * @title 可控制的提醒\n * @description 通过设置duration:6来设置时间，null为自动控制\n *\n */\n\nclass Demo3 extends Component {\n    constructor(props){\n        super(props);\n        this.manualClose = this.manualClose.bind(this);\n    }\n closableFn() {\n      notification.notice({\n        content: <span>closdisable but autoclose</span>,\n        duration: null,\n        onClose() {\n          console.log('closable close');\n        },\n        duration: 6,\n        closable: false\n      });\n    }\n\n close(key) {\n      notification.removeNotice(key);\n    }\n\n manualClose() {\n      const key = Date.now();\n      notification.notice({\n        content: <div>\n          <p>click below button to close</p>\n          <Button onClick={this.close.bind(this, key)}>close</Button>\n        </div>,\n        key,\n        duration: null,\n      });\n    }\n    render () {\n        return (\n            <div className=\"demoPadding\">\n            <Button colors=\"primary\" onClick={this.closableFn}>closdisable but autoclose</Button>\n            <Button colors=\"primary\" onClick={this.manualClose}>controlled close</Button>\n            </div>\n        )\n    }\n}\n","desc":" 通过设置duration:6来设置时间，null为自动控制"}]
 
 
 class Demo extends Component {
