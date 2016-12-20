@@ -1,4 +1,4 @@
- import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
 //import Animate from 'rc-animate';
 import createChainedFunction from 'tinper-bee-core/lib/createChainedFunction';
@@ -44,7 +44,7 @@ class Notification extends Component {
         super(props);
         this.state = {
              notices: []
-        }
+        };
         this.add = this.add.bind(this);
         this.remove = this.remove.bind(this);
 

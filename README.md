@@ -60,7 +60,7 @@ import "./node_modules/bee-notification/build/Notification.css"
 #### Notice
 
 |参数|说明|类型|默认值|
-|:--|:---:|:--:|---:|
+|:---|:-----|:----|:------|
 |duration|显示时间|number|4.5|
 |onClose|关闭时触发的钩子函数|function|-|
 |closable|是否可手动关闭|boolean|true|
