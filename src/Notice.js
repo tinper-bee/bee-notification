@@ -5,7 +5,8 @@ const propTypes = {
     duration: PropTypes.number,
     onClose: PropTypes.func,
     children: PropTypes.any,
-    color: PropTypes.oneOf(['success', 'warning', 'danger', 'info', 'dark'])
+    color: PropTypes.oneOf(['light']),
+    title: PropTypes.any
 };
 
 function noop() {}
@@ -49,7 +50,7 @@ class Notice extends React.Component {
   }
 
   render() {
-    const { closable, clsPrefix, className, style, children, color } = this.props;
+    const { closable, clsPrefix, className, style, children, color, title } = this.props;
     const componentClass = `${clsPrefix}-notice`;
     const classes = {
       [`${componentClass}`]: 1,
@@ -61,7 +62,12 @@ class Notice extends React.Component {
     }
     return (
       <div className={classNames(classes)} style={style}>
-        <div className={`${componentClass}-content`}>{children}</div>
+        <div className={`${componentClass}-content`}>
+            {title && <div className={`${componentClass}-title`}>title</div>}
+            <div className={`${componentClass}-description`}>
+                {children}
+            </div>
+        </div>
         {closable ?
           <a tabIndex="0" onClick={this.close} className={`${componentClass}-close`}>
             <span className={`${componentClass}-close-x`}></span>

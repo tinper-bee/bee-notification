@@ -9,47 +9,51 @@ class Demo2 extends Component {
 
  simpleFnsuccess() {
       notification.notice({
-        content: <span>simple show</span>,
+         title: '我是标题',
+        content: <span>simpleshowaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,
         onClose() {
           console.log('simple close');
         },
-        color: 'success'
+        color: 'dark',
+        duration: null
       });
     }
  simpleFndark() {
       notification.notice({
-        content: <span>simple show</span>,
+        content: <span>simpleshowaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,
         onClose() {
           console.log('simple close');
         },
-        color: 'dark'
+        color: 'light',
+        duration: null
       });
     }
 simpleFnwarning() {
       notification.notice({
-        content: <span>simple show</span>,
+        content: <span>simpleshowaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,
         onClose() {
           console.log('simple close');
         },
-        color: 'warning'
+        color: 'light'
       });
     }
  simpleFninfo() {
       notification.notice({
-        content: <span>simple show</span>,
+        content: <span>simple showaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,
         onClose() {
           console.log('simple close');
         },
-        color: 'info'
+        color: 'light',
+        duration: null
       });
     }
  simpleFndanger() {
       notification.notice({
-        content: <span>simple show</span>,
+        content: <span>simple showaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,
         onClose() {
           console.log('simple close');
         },
-        color: 'danger'
+        color: 'light'
       });
     }
     render () {

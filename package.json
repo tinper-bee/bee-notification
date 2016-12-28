@@ -33,6 +33,7 @@
     "pub": "bee-tools run pub"
   },
   "dependencies": {
+    "bee-animate": "0.0.3",
     "bee-button": "^0.1.8",
     "bee-transition": "0.0.1",
     "classnames": "^2.2.5",

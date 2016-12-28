@@ -52,47 +52,51 @@ class Demo2 extends Component {
 
  simpleFnsuccess() {
       notification.notice({
-        content: <span>simple show</span>,
+         title: '我是标题',
+        content: <span>simpleshowaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,
         onClose() {
           console.log('simple close');
         },
-        color: 'success'
+        color: 'dark',
+        duration: null
       });
     }
  simpleFndark() {
       notification.notice({
-        content: <span>simple show</span>,
+        content: <span>simpleshowaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,
         onClose() {
           console.log('simple close');
         },
-        color: 'dark'
+        color: 'light',
+        duration: null
       });
     }
 simpleFnwarning() {
       notification.notice({
-        content: <span>simple show</span>,
+        content: <span>simpleshowaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,
         onClose() {
           console.log('simple close');
         },
-        color: 'warning'
+        color: 'light'
       });
     }
  simpleFninfo() {
       notification.notice({
-        content: <span>simple show</span>,
+        content: <span>simple showaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,
         onClose() {
           console.log('simple close');
         },
-        color: 'info'
+        color: 'light',
+        duration: null
       });
     }
  simpleFndanger() {
       notification.notice({
-        content: <span>simple show</span>,
+        content: <span>simple showaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,
         onClose() {
           console.log('simple close');
         },
-        color: 'danger'
+        color: 'light'
       });
     }
     render () {
@@ -155,7 +159,7 @@ class Demo3 extends Component {
         )
     }
 }
-var DemoArray = [{"example":<Demo1 />,"title":" 默认提醒","code":"/**\r\n *\r\n * @title 默认提醒\r\n * @description\r\n *\r\n */\r\n\r\n\r\n\r\n\r\nclass Demo1 extends Component {\r\n\r\n    simpleFn() {\r\n      notification.notice({\r\n        content: <span>simple show</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n      });\r\n    }\r\n    render () {\r\n\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button onClick={this.simpleFn}>simple show</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n","desc":""},{"example":<Demo2 />,"title":" 不同颜色的提醒","code":"/**\r\n *\r\n * @title 不同颜色的提醒\r\n * @description 通过color属性来设置提醒的颜色\r\n *\r\n */\r\n\r\nclass Demo2 extends Component {\r\n\r\n simpleFnsuccess() {\r\n      notification.notice({\r\n        content: <span>simple show</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n        color: 'success'\r\n      });\r\n    }\r\n simpleFndark() {\r\n      notification.notice({\r\n        content: <span>simple show</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n        color: 'dark'\r\n      });\r\n    }\r\nsimpleFnwarning() {\r\n      notification.notice({\r\n        content: <span>simple show</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n        color: 'warning'\r\n      });\r\n    }\r\n simpleFninfo() {\r\n      notification.notice({\r\n        content: <span>simple show</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n        color: 'info'\r\n      });\r\n    }\r\n simpleFndanger() {\r\n      notification.notice({\r\n        content: <span>simple show</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n        color: 'danger'\r\n      });\r\n    }\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n            <Button onClick={this.simpleFnsuccess} colors=\"success\">success show</Button>\r\n            <Button onClick={this.simpleFninfo} colors=\"info\">info show</Button>\r\n            <Button onClick={this.simpleFndark} style={{ background: \"rgb(97,97,97)\", color: \"#fff\"}}>dark show</Button>\r\n            <Button onClick={this.simpleFndanger} colors=\"danger\">danger show</Button>\r\n            <Button onClick={this.simpleFnwarning} colors=\"warning\">warning show</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n","desc":" 通过color属性来设置提醒的颜色"},{"example":<Demo3 />,"title":" 可控制的提醒","code":"/**\r\n *\r\n * @title 可控制的提醒\r\n * @description 通过设置duration:6来设置时间，null为自动控制\r\n *\r\n */\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.manualClose = this.manualClose.bind(this);\r\n    }\r\n closableFn() {\r\n      notification.notice({\r\n        content: <span>closdisable but autoclose</span>,\r\n        duration: null,\r\n        onClose() {\r\n          console.log('closable close');\r\n        },\r\n        duration: 6,\r\n        closable: false\r\n      });\r\n    }\r\n\r\n close(key) {\r\n      notification.removeNotice(key);\r\n    }\r\n\r\n manualClose() {\r\n      const key = Date.now();\r\n      notification.notice({\r\n        content: <div>\r\n          <p>click below button to close</p>\r\n          <Button onClick={this.close.bind(this, key)}>close</Button>\r\n        </div>,\r\n        key,\r\n        duration: null,\r\n      });\r\n    }\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n            <Button colors=\"primary\" onClick={this.closableFn}>closdisable but autoclose</Button>\r\n            <Button colors=\"primary\" onClick={this.manualClose}>controlled close</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n","desc":" 通过设置duration:6来设置时间，null为自动控制"}]
+var DemoArray = [{"example":<Demo1 />,"title":" 默认提醒","code":"/**\r\n *\r\n * @title 默认提醒\r\n * @description\r\n *\r\n */\r\n\r\n\r\n\r\n\r\nclass Demo1 extends Component {\r\n\r\n    simpleFn() {\r\n      notification.notice({\r\n        content: <span>simple show</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n      });\r\n    }\r\n    render () {\r\n\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button onClick={this.simpleFn}>simple show</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n","desc":""},{"example":<Demo2 />,"title":" 不同颜色的提醒","code":"/**\r\n *\r\n * @title 不同颜色的提醒\r\n * @description 通过color属性来设置提醒的颜色\r\n *\r\n */\r\n\r\nclass Demo2 extends Component {\r\n\r\n simpleFnsuccess() {\r\n      notification.notice({\r\n         title: '我是标题',\r\n        content: <span>simpleshowaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n        color: 'dark',\r\n        duration: null\r\n      });\r\n    }\r\n simpleFndark() {\r\n      notification.notice({\r\n        content: <span>simpleshowaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n        color: 'light',\r\n        duration: null\r\n      });\r\n    }\r\nsimpleFnwarning() {\r\n      notification.notice({\r\n        content: <span>simpleshowaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n        color: 'light'\r\n      });\r\n    }\r\n simpleFninfo() {\r\n      notification.notice({\r\n        content: <span>simple showaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n        color: 'light',\r\n        duration: null\r\n      });\r\n    }\r\n simpleFndanger() {\r\n      notification.notice({\r\n        content: <span>simple showaaaaaaaaaaaaaaaaasfgadageqrgfgfddddddddddddgadddddddddddddddddddddddddddddddd</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n        color: 'light'\r\n      });\r\n    }\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n            <Button onClick={this.simpleFnsuccess} colors=\"success\">success show</Button>\r\n            <Button onClick={this.simpleFninfo} colors=\"info\">info show</Button>\r\n            <Button onClick={this.simpleFndark} style={{ background: \"rgb(97,97,97)\", color: \"#fff\"}}>dark show</Button>\r\n            <Button onClick={this.simpleFndanger} colors=\"danger\">danger show</Button>\r\n            <Button onClick={this.simpleFnwarning} colors=\"warning\">warning show</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n","desc":" 通过color属性来设置提醒的颜色"},{"example":<Demo3 />,"title":" 可控制的提醒","code":"/**\r\n *\r\n * @title 可控制的提醒\r\n * @description 通过设置duration:6来设置时间，null为自动控制\r\n *\r\n */\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.manualClose = this.manualClose.bind(this);\r\n    }\r\n closableFn() {\r\n      notification.notice({\r\n        content: <span>closdisable but autoclose</span>,\r\n        duration: null,\r\n        onClose() {\r\n          console.log('closable close');\r\n        },\r\n        duration: 6,\r\n        closable: false\r\n      });\r\n    }\r\n\r\n close(key) {\r\n      notification.removeNotice(key);\r\n    }\r\n\r\n manualClose() {\r\n      const key = Date.now();\r\n      notification.notice({\r\n        content: <div>\r\n          <p>click below button to close</p>\r\n          <Button onClick={this.close.bind(this, key)}>close</Button>\r\n        </div>,\r\n        key,\r\n        duration: null,\r\n      });\r\n    }\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n            <Button colors=\"primary\" onClick={this.closableFn}>closdisable but autoclose</Button>\r\n            <Button colors=\"primary\" onClick={this.manualClose}>controlled close</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n","desc":" 通过设置duration:6来设置时间，null为自动控制"}]
 
 
 class Demo extends Component {

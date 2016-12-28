@@ -1,34 +1,50 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 
-
+$zIndex-notification: 1000;
+$notification-top: 30px;
+$notification-bottom: 30px;
+$notification-right: 30px;
+$notification-width: 300px;
+$notification-text-margin-right: 15px;
+$default-border-radius: 4px;
+$notice-padding: 15px;
+$notice-background: $gray-darkest;
+$notice-bottom: 15px;
 
 .u-notification{
   position: fixed;
-  z-index: 1000;
+  z-index: $zIndex-notification;
+  width: $notification-width;
+  margin-right: $notification-text-margin-right;
 
   &-topRight{
-      top: 65px;
-      right: 10%;
+      top: $notification-top;
+      right: $notification-right;
   }
   &-bottomRight{
-      bottom: 165px;
-      right: 10%;
+      bottom: $notification-bottom;
+      right: $notification-right;
   }
 
   &-notice {
-    padding: 7px 20px 7px 10px;
-    border-radius: 3px 3px;
-    border: 1px solid #999;;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border: 0px solid rgba(0, 0, 0, 0);;
-    background: #fff;
-    display: block;
-    width: auto;
+    padding: $notice-padding;
+    border-radius: $default-border-radius;
+    @include shadow-3dp();
+    background: $notice-background;
     line-height: 1.5;
-    vertical-align: middle;
-    position: relative;
-    margin: 10px 0;
+    opacity: .9;
+    margin-bottom: $notice-bottom;
+    overflow: hidden;
+    color: #fff;
+    &-title {
+        font-size: 14px;
+        margin-bottom: 4px;
+        line-height: 20px;
+    }
+    &-description {
+        font-size: 12px;
+    }
 
     &-closable {
       padding-right: 20px;
@@ -38,7 +54,7 @@
       position: absolute;
       right: 5px;
       top: 3px;
-      color: #000;
+      color: $gray-lighter;
       cursor: pointer;
       outline: none;
       font-size: 16px;
@@ -60,27 +76,15 @@
       }
 
     }
-    &-success {
-        background-color: $brand-success;
-        color: #fff;
-    }
-    &-warning {
-        background-color: $brand-warning;
-        color: #fff;
-    }
-    &-info {
-        background-color: $brand-info;
-        color: #fff;
-    }
-    &-danger {
-        background-color: $brand-danger;
-        color: #fff;
-    }
-    &-dark {
-        background-color: $brand-dark;
-        color: #fff;
-    }
   }
+
+  &-notice-light {
+        background-color: #fff;
+        color: #000;
+        &-close {
+            color: #000;
+        }
+      }
 
   @mixin fade-effect() {
     animation-duration: 0.3s;

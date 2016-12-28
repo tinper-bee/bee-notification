@@ -1,11 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
-//import Animate from 'rc-animate';
+import Animate from 'bee-animate';
 import createChainedFunction from 'tinper-bee-core/lib/createChainedFunction';
 import classnames from 'classnames';
 import Notice from './Notice';
 import  elementType from 'tinper-bee-core/lib/elementType';
-import Fade from 'bee-transition/build/Fade';
 
 let seed = 0;
 const now = Date.now();
@@ -17,26 +16,16 @@ function getUuid() {
 var propTypes = {
     show: PropTypes.bool,
     clsPrefix: PropTypes.string,
-    transition: elementType,
     style: PropTypes.object,
     position: PropTypes.oneOf(['topRight', 'bottomRight', '']),
-    /**
-     * 延迟时间
-     */
-    timeout: React.PropTypes.number,
-    onEnter: React.PropTypes.func,
-    onEntering: React.PropTypes.func,
-    onEntered: React.PropTypes.func,
-    onExit: React.PropTypes.func,
-    onExiting: React.PropTypes.func,
-    onExited: React.PropTypes.func,
+    transitionName: PropTypes.string,
+    animation: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
 var defaultProps = {
     clsPrefix: 'u-notification',
-    transition: Fade,
-    position: 'topRight',
-    show: true
+    animation: 'fade',
+    position: 'topRight'
 }
 
 class Notification extends Component {
@@ -50,10 +39,16 @@ class Notification extends Component {
 
     }
 
-
+    getTransitionName() {
+        const props = this.props;
+        let transitionName = props.transitionName;
+        if (!transitionName && props.animation) {
+          transitionName = `${props.clsPrefix}-${props.animation}`;
+        }
+        return transitionName;
+      }
 
   add(notice) {
-      console.log(notice);
     const key = notice.key = notice.key || getUuid();
     this.setState(previousState => {
       const notices = previousState.notices;
@@ -77,15 +72,7 @@ class Notification extends Component {
     const {
         clsPrefix,
         className,
-        transition: Transition,
         position,
-        onExit,
-        onExiting,
-        onEnter,
-        onEntering,
-        show,
-        onEntered,
-        timeout,
         style,
     } = this.props;
     const noticeNodes = this.state.notices.map((notice) => {
@@ -107,23 +94,9 @@ class Notification extends Component {
     }
 
     return (
-      <div className={classnames(classes)} style={style}>
-      <Transition
-        transitionAppear
-        in={show}
-        timeout={timeout}
-        onExit={onExit}
-        onExiting={onExiting}
-        onExited={this.handleHidden}
-        onEnter={onEnter}
-        onEntering={onEntering}
-        onEntered={onEntered}
-      >
-      <div>
-      {noticeNodes}
-      </div>
-      </Transition>
-      </div>
+        <div className={classnames(className,classes)} style={style}>
+          <Animate transitionName={this.getTransitionName()}>{noticeNodes}</Animate>
+        </div>
     );
   }
 };
