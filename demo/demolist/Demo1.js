@@ -12,7 +12,7 @@ class Demo1 extends Component {
 
     simpleFn() {
       notification.notice({
-        content: <span>simple show</span>,
+        content: <span>这是一个提示</span>,
         onClose() {
           console.log('simple close');
         },

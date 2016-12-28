@@ -63,7 +63,7 @@ class Notice extends React.Component {
     return (
       <div className={classNames(classes)} style={style}>
         <div className={`${componentClass}-content`}>
-            {title && <div className={`${componentClass}-title`}>title</div>}
+            {title && (<div className={`${componentClass}-title`}>{title}</div>)}
             <div className={`${componentClass}-description`}>
                 {children}
             </div>

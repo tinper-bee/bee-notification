@@ -28,12 +28,12 @@ $notice-bottom: 15px;
   }
 
   &-notice {
+    position: relative;
     padding: $notice-padding;
     border-radius: $default-border-radius;
     @include shadow-3dp();
     background: $notice-background;
     line-height: 1.5;
-    opacity: .9;
     margin-bottom: $notice-bottom;
     overflow: hidden;
     color: #fff;
@@ -44,6 +44,7 @@ $notice-bottom: 15px;
     }
     &-description {
         font-size: 12px;
+        word-wrap: break-word;
     }
 
     &-closable {
@@ -52,17 +53,16 @@ $notice-bottom: 15px;
 
     &-close {
       position: absolute;
-      right: 5px;
-      top: 3px;
-      color: $gray-lighter;
+      right: 10px;
+      top: 6px;
       cursor: pointer;
       outline: none;
       font-size: 16px;
       font-weight: 700;
       line-height: 1;
       text-shadow: 0 1px 0 #fff;
-      filter: alpha(opacity=20);
-      opacity: .2;
+      filter: alpha(opacity=80);
+      opacity: .8;
       text-decoration: none;
 
       &-x:after {
@@ -76,15 +76,13 @@ $notice-bottom: 15px;
       }
 
     }
+
   }
 
   &-notice-light {
         background-color: #fff;
-        color: #000;
-        &-close {
-            color: #000;
-        }
-      }
+        color: $gray-darkest;
+     }
 
   @mixin fade-effect() {
     animation-duration: 0.3s;

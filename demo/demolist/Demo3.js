@@ -12,7 +12,7 @@ class Demo3 extends Component {
     }
  closableFn() {
       notification.notice({
-        content: <span>closdisable but autoclose</span>,
+        content: <span>只可以自动关闭的提示</span>,
         duration: null,
         onClose() {
           console.log('closable close');
@@ -30,18 +30,19 @@ class Demo3 extends Component {
       const key = Date.now();
       notification.notice({
         content: <div>
-          <p>click below button to close</p>
-          <Button onClick={this.close.bind(this, key)}>close</Button>
+          <p>只可以点击关闭的提示</p>
+          <Button onClick={this.close.bind(this, key)} shape='border' style={{ position: 'absolute', right: 5, bottom: 3}}>close</Button>
         </div>,
         key,
         duration: null,
+        closable: false
       });
     }
     render () {
         return (
             <div className="demoPadding">
-            <Button colors="primary" onClick={this.closableFn}>closdisable but autoclose</Button>
-            <Button colors="primary" onClick={this.manualClose}>controlled close</Button>
+            <Button colors="primary" onClick={this.closableFn}>自动关闭</Button>
+            <Button colors="primary" onClick={this.manualClose}>手动关闭</Button>
             </div>
         )
     }
