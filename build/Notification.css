@@ -37,11 +37,11 @@
   position: fixed;
   z-index: 1000; }
   .u-notification-topRight {
-    top: 65px;
-    right: 10%; }
+    top: 30px;
+    right: 30px; }
   .u-notification-bottomRight {
-    bottom: 165px;
-    right: 10%; }
+    bottom: 30px;
+    right: 30px; }
   .u-notification-notice {
     padding: 7px 20px 7px 10px;
     border-radius: 3px 3px;

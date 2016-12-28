@@ -60,7 +60,7 @@ var propTypes = {
   clsPrefix: _react.PropTypes.string,
   transition: _elementType2["default"],
   style: _react.PropTypes.object,
-  position: _react.PropTypes.oneOf(['topRight', 'bottomRight']),
+  position: _react.PropTypes.oneOf(['topRight', 'bottomRight', '']),
   /**
    * 延迟时间
    */
@@ -76,7 +76,8 @@ var propTypes = {
 var defaultProps = {
   clsPrefix: 'u-notification',
   transition: _Fade2["default"],
-  position: 'topRight'
+  position: 'topRight',
+  show: true
 };
 
 var Notification = function (_Component) {
@@ -153,7 +154,7 @@ var Notification = function (_Component) {
     });
     var classes = (_classes = {}, _defineProperty(_classes, clsPrefix, 1), _defineProperty(_classes, className, !!className), _classes);
     if (position) {
-      classes[clsPrefix + '-' + position] = true;
+      classes[clsPrefix + '-' + position] = !!position;
     }
 
     return _react2["default"].createElement(

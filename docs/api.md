@@ -9,7 +9,7 @@ Notification通知不同于操作类型的信息反馈，是一种主动推送�
 #### Notice
 
 |参数|说明|类型|默认值|
-|:--|:---:|:--:|---:|
+|:---|:-----|:----|:------|
 |duration|显示时间|number|4.5|
 |onClose|关闭时触发的钩子函数|function|-|
 |closable|是否可手动关闭|boolean|true|
@@ -18,7 +18,7 @@ Notification通知不同于操作类型的信息反馈，是一种主动推送�
 #### Notification
 
 |参数|说明|类型|默认值|
-|:--|:---:|:--:|---:|
+|:---|:-----|:----|:------|
 |show|是否显示|boolean|true|
 |transition|动画|element|Fade|
 |position|显示位置|topRight/BottomRight|topRight|
