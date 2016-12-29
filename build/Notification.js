@@ -14,6 +14,10 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _beeAnimate = require('bee-animate');
+
+var _beeAnimate2 = _interopRequireDefault(_beeAnimate);
+
 var _createChainedFunction = require('tinper-bee-core/lib/createChainedFunction');
 
 var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
@@ -30,10 +34,6 @@ var _elementType = require('tinper-bee-core/lib/elementType');
 
 var _elementType2 = _interopRequireDefault(_elementType);
 
-var _Fade = require('bee-transition/build/Fade');
-
-var _Fade2 = _interopRequireDefault(_Fade);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -45,8 +45,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
-//import Animate from 'rc-animate';
-
 
 var seed = 0;
 var now = Date.now();
@@ -58,26 +56,16 @@ function getUuid() {
 var propTypes = {
   show: _react.PropTypes.bool,
   clsPrefix: _react.PropTypes.string,
-  transition: _elementType2["default"],
   style: _react.PropTypes.object,
   position: _react.PropTypes.oneOf(['topRight', 'bottomRight', '']),
-  /**
-   * 延迟时间
-   */
-  timeout: _react2["default"].PropTypes.number,
-  onEnter: _react2["default"].PropTypes.func,
-  onEntering: _react2["default"].PropTypes.func,
-  onEntered: _react2["default"].PropTypes.func,
-  onExit: _react2["default"].PropTypes.func,
-  onExiting: _react2["default"].PropTypes.func,
-  onExited: _react2["default"].PropTypes.func
+  transitionName: _react.PropTypes.string,
+  animation: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.object])
 };
 
 var defaultProps = {
   clsPrefix: 'u-notification',
-  transition: _Fade2["default"],
-  position: 'topRight',
-  show: true
+  animation: 'fade',
+  position: 'topRight'
 };
 
 var Notification = function (_Component) {
@@ -97,8 +85,16 @@ var Notification = function (_Component) {
     return _this;
   }
 
+  Notification.prototype.getTransitionName = function getTransitionName() {
+    var props = this.props;
+    var transitionName = props.transitionName;
+    if (!transitionName && props.animation) {
+      transitionName = props.clsPrefix + '-' + props.animation;
+    }
+    return transitionName;
+  };
+
   Notification.prototype.add = function add(notice) {
-    console.log(notice);
     var key = notice.key = notice.key || getUuid();
     this.setState(function (previousState) {
       var notices = previousState.notices;
@@ -129,15 +125,7 @@ var Notification = function (_Component) {
     var _props = this.props,
         clsPrefix = _props.clsPrefix,
         className = _props.className,
-        Transition = _props.transition,
         position = _props.position,
-        onExit = _props.onExit,
-        onExiting = _props.onExiting,
-        onEnter = _props.onEnter,
-        onEntering = _props.onEntering,
-        show = _props.show,
-        onEntered = _props.onEntered,
-        timeout = _props.timeout,
         style = _props.style;
 
     var noticeNodes = this.state.notices.map(function (notice) {
@@ -159,25 +147,11 @@ var Notification = function (_Component) {
 
     return _react2["default"].createElement(
       'div',
-      { className: (0, _classnames2["default"])(classes), style: style },
+      { className: (0, _classnames2["default"])(className, classes), style: style },
       _react2["default"].createElement(
-        Transition,
-        {
-          transitionAppear: true,
-          'in': show,
-          timeout: timeout,
-          onExit: onExit,
-          onExiting: onExiting,
-          onExited: this.handleHidden,
-          onEnter: onEnter,
-          onEntering: onEntering,
-          onEntered: onEntered
-        },
-        _react2["default"].createElement(
-          'div',
-          null,
-          noticeNodes
-        )
+        _beeAnimate2["default"],
+        { transitionName: this.getTransitionName() },
+        noticeNodes
       )
     );
   };

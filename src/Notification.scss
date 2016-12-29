@@ -84,48 +84,61 @@ $notice-bottom: 15px;
         color: $gray-darkest;
      }
 
-  @mixin fade-effect() {
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
-  }
 
-  &-fade-enter {
-    opacity: 0;
-    @include fade-effect();
-    animation-play-state: paused;
-  }
-
-  &-fade-leave {
-    @include fade-effect();
-    animation-play-state: paused;
-  }
-
-  &-fade-enter + &-fade-enter-active {
-    animation-name: rcNotificationFadeIn;
-    animation-play-state: running;
-  }
-
-  &-fade-leave + &-fade-leave-active {
-    animation-name: rcDialogFadeOut;
-    animation-play-state: running;
-  }
-
-  @keyframes uNotificationFadeIn {
-    0% {
-      opacity: 0;
     }
-    100% {
-      opacity: 1;
-    }
-  }
+    .notification-fade-effect {
+       animation-duration: 0.24s;
+       animation-fill-mode: both;
+       animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+     }
 
-  @keyframes uDialogFadeOut {
-    0% {
-      opacity: 1;
+     .u-notification-fade-enter,
+     .u-notification-fade-appear {
+       opacity: 0;
+       @extend .notification-fade-effect;
+       animation-play-state: paused;
+     }
+
+     .u-notification-fade-leave {
+       @extend .notification-fade-effect;
+       animation-duration: 0.2s;
+       animation-play-state: paused;
+     }
+
+     .u-notification-fade-enter.u-notification-fade-enter-active,
+     .u-notification-fade-appear.u-notification-fade-appear-active {
+       animation-name: uNotificationFadeIn;
+       animation-play-state: running;
+     }
+
+     .u-notification-fade-leave.u-notification-fade-leave-active {
+       animation-name: uNotificationFadeOut;
+       animation-play-state: running;
+     }
+    @keyframes uNotificationFadeIn {
+      0% {
+        opacity: 0;
+        left: $notification-width;
+      }
+      100% {
+        left: 0;
+        opacity: 1;
+      }
     }
-    100% {
-      opacity: 0;
+
+    @keyframes uNotificationFadeOut {
+      0% {
+        opacity: 1;
+        margin-bottom: $notice-bottom;
+        padding-top: $notice-padding;
+        padding-bottom: $notice-padding;
+        max-height: 150px;
+      }
+      100% {
+        opacity: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        max-height: 0;
+      }
     }
-  }
-}

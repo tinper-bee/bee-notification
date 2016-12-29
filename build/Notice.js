@@ -28,7 +28,8 @@ var propTypes = {
   duration: _react.PropTypes.number,
   onClose: _react.PropTypes.func,
   children: _react.PropTypes.any,
-  color: _react.PropTypes.oneOf(['success', 'warning', 'danger', 'info', 'dark'])
+  color: _react.PropTypes.oneOf(['light']),
+  title: _react.PropTypes.any
 };
 
 function noop() {}
@@ -88,7 +89,8 @@ var Notice = function (_React$Component) {
         className = _props.className,
         style = _props.style,
         children = _props.children,
-        color = _props.color;
+        color = _props.color,
+        title = _props.title;
 
     var componentClass = clsPrefix + '-notice';
     var classes = (_classes = {}, _defineProperty(_classes, '' + componentClass, 1), _defineProperty(_classes, componentClass + '-closable', closable), _defineProperty(_classes, className, !!className), _classes);
@@ -101,7 +103,16 @@ var Notice = function (_React$Component) {
       _react2["default"].createElement(
         'div',
         { className: componentClass + '-content' },
-        children
+        title && _react2["default"].createElement(
+          'div',
+          { className: componentClass + '-title' },
+          title
+        ),
+        _react2["default"].createElement(
+          'div',
+          { className: componentClass + '-description' },
+          children
+        )
       ),
       closable ? _react2["default"].createElement(
         'a',
