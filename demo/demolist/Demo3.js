@@ -31,7 +31,7 @@ class Demo3 extends Component {
       notification.notice({
         content: <div>
           <p>只可以点击关闭的提示</p>
-          <Button onClick={this.close.bind(this, key)} size="sm" style={{ position: 'absolute', right: 15, bottom: 15}}>close</Button>
+          <Button onClick={this.close.bind(this, key)} size="sm" style={{ position: 'absolute', right: 15, bottom: 15}}>知道了</Button>
         </div>,
         key,
         duration: null,
