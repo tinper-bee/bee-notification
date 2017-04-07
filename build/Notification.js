@@ -122,11 +122,11 @@ var Notification = function (_Component) {
     var _this2 = this,
         _classes;
 
-    var _props = this.props,
-        clsPrefix = _props.clsPrefix,
-        className = _props.className,
-        position = _props.position,
-        style = _props.style;
+    var _props = this.props;
+    var clsPrefix = _props.clsPrefix;
+    var className = _props.className;
+    var position = _props.position;
+    var style = _props.style;
 
     var noticeNodes = this.state.notices.map(function (notice) {
       var onClose = (0, _createChainedFunction2["default"])(_this2.remove.bind(_this2, notice.key), notice.onClose);

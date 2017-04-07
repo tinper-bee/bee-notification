@@ -61,7 +61,7 @@ class Notice extends React.Component {
         classes[`${componentClass}-${color}`] = true;
     }
     return (
-      <div className={classNames(classes)} style={style}>
+      <div className={classNames(classes)} style={style} onClick={ this.close }>
         <div className={`${componentClass}-content`}>
             {title && (<div className={`${componentClass}-title`}>{title}</div>)}
             <div className={`${componentClass}-description`}>

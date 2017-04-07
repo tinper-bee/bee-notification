@@ -83,14 +83,14 @@ var Notice = function (_React$Component) {
   Notice.prototype.render = function render() {
     var _classes;
 
-    var _props = this.props,
-        closable = _props.closable,
-        clsPrefix = _props.clsPrefix,
-        className = _props.className,
-        style = _props.style,
-        children = _props.children,
-        color = _props.color,
-        title = _props.title;
+    var _props = this.props;
+    var closable = _props.closable;
+    var clsPrefix = _props.clsPrefix;
+    var className = _props.className;
+    var style = _props.style;
+    var children = _props.children;
+    var color = _props.color;
+    var title = _props.title;
 
     var componentClass = clsPrefix + '-notice';
     var classes = (_classes = {}, _defineProperty(_classes, '' + componentClass, 1), _defineProperty(_classes, componentClass + '-closable', closable), _defineProperty(_classes, className, !!className), _classes);
@@ -99,7 +99,7 @@ var Notice = function (_React$Component) {
     }
     return _react2["default"].createElement(
       'div',
-      { className: (0, _classnames2["default"])(classes), style: style },
+      { className: (0, _classnames2["default"])(classes), style: style, onClick: this.close },
       _react2["default"].createElement(
         'div',
         { className: componentClass + '-content' },
