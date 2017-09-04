@@ -5,6 +5,12 @@
  *
  */
 
+import React, { Component } from 'react';
+import Button from 'bee-button';
+import Notification from '../../src';
+
+const notification = Notification.newInstance({position: 'bottomRight'});
+
 class Demo2 extends Component {
 
  simpleLight() {
@@ -23,9 +29,11 @@ class Demo2 extends Component {
     render () {
         return (
             <div className="demoPadding">
-            <Button onClick={this.simpleLight}>light notification</Button>
-            <Button onClick={this.simpleDark} style={{ background: '#404040', color: '#fff' }}>dark notification</Button>
+                <Button onClick={this.simpleLight}>light notification</Button>
+                <Button onClick={this.simpleDark} style={{ background: '#404040', color: '#fff' }}>dark notification</Button>
             </div>
         )
     }
 }
+
+export default Demo2;

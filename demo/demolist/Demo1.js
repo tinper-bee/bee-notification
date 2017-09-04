@@ -5,7 +5,11 @@
  *
  */
 
+import React, { Component } from 'react';
+import Button from 'bee-button';
+import Notification from '../../src';
 
+const notification = Notification.newInstance({position: 'bottomRight'});
 
 
 class Demo1 extends Component {
@@ -27,3 +31,5 @@ class Demo1 extends Component {
         )
     }
 }
+
+export default Demo1;

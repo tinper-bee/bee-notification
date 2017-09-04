@@ -5,6 +5,12 @@
  *
  */
 
+import React, { Component } from 'react';
+import Button from 'bee-button';
+import Notification from '../../src';
+
+const notification = Notification.newInstance({position: 'bottomRight'});
+
 class Demo3 extends Component {
     constructor(props){
         super(props);
@@ -41,9 +47,11 @@ class Demo3 extends Component {
     render () {
         return (
             <div className="demoPadding">
-            <Button colors="primary" onClick={this.closableFn}>自动关闭</Button>
-            <Button colors="primary" onClick={this.manualClose}>手动关闭</Button>
+                <Button colors="primary" onClick={this.closableFn}>自动关闭</Button>
+                <Button colors="primary" onClick={this.manualClose}>手动关闭</Button>
             </div>
         )
     }
 }
+
+export default Demo3;
