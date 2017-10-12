@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -54,12 +58,12 @@ function getUuid() {
 }
 
 var propTypes = {
-  show: _react.PropTypes.bool,
-  clsPrefix: _react.PropTypes.string,
-  style: _react.PropTypes.object,
-  position: _react.PropTypes.oneOf(['topRight', 'bottomRight', '']),
-  transitionName: _react.PropTypes.string,
-  animation: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.object])
+  show: _propTypes2["default"].bool,
+  clsPrefix: _propTypes2["default"].string,
+  style: _propTypes2["default"].object,
+  position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', '']),
+  transitionName: _propTypes2["default"].string,
+  animation: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object])
 };
 
 var defaultProps = {
@@ -122,11 +126,11 @@ var Notification = function (_Component) {
     var _this2 = this,
         _classes;
 
-    var _props = this.props;
-    var clsPrefix = _props.clsPrefix;
-    var className = _props.className;
-    var position = _props.position;
-    var style = _props.style;
+    var _props = this.props,
+        clsPrefix = _props.clsPrefix,
+        className = _props.className,
+        position = _props.position,
+        style = _props.style;
 
     var noticeNodes = this.state.notices.map(function (notice) {
       var onClose = (0, _createChainedFunction2["default"])(_this2.remove.bind(_this2, notice.key), notice.onClose);

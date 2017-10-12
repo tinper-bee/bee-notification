@@ -12,6 +12,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -25,11 +29,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
 var propTypes = {
-  duration: _react.PropTypes.number,
-  onClose: _react.PropTypes.func,
-  children: _react.PropTypes.any,
-  color: _react.PropTypes.oneOf(['light']),
-  title: _react.PropTypes.any
+  duration: _propTypes2["default"].number,
+  onClose: _propTypes2["default"].func,
+  children: _propTypes2["default"].any,
+  color: _propTypes2["default"].oneOf(['light']),
+  title: _propTypes2["default"].any
 };
 
 function noop() {}
@@ -83,14 +87,14 @@ var Notice = function (_React$Component) {
   Notice.prototype.render = function render() {
     var _classes;
 
-    var _props = this.props;
-    var closable = _props.closable;
-    var clsPrefix = _props.clsPrefix;
-    var className = _props.className;
-    var style = _props.style;
-    var children = _props.children;
-    var color = _props.color;
-    var title = _props.title;
+    var _props = this.props,
+        closable = _props.closable,
+        clsPrefix = _props.clsPrefix,
+        className = _props.className,
+        style = _props.style,
+        children = _props.children,
+        color = _props.color,
+        title = _props.title;
 
     var componentClass = clsPrefix + '-notice';
     var classes = (_classes = {}, _defineProperty(_classes, '' + componentClass, 1), _defineProperty(_classes, componentClass + '-closable', closable), _defineProperty(_classes, className, !!className), _classes);
@@ -127,7 +131,7 @@ var Notice = function (_React$Component) {
 
 ;
 
-Notice.PropTypes = _react.PropTypes;
+Notice.PropTypes = _propTypes2["default"];
 Notice.defaultProps = defaultProps;
 
 exports["default"] = Notice;
