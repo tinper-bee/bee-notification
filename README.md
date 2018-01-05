@@ -65,6 +65,8 @@ import "./node_modules/bee-notification/build/Notification.css"
 |onClose|关闭时触发的钩子函数|function|-|
 |closable|是否可手动关闭|boolean|true|
 |color|显示颜色|success/info/danger/warning/dark|-|
+|className|类名|string|-|
+|style|样式|object|-|
 
 #### Notification
 
@@ -80,6 +82,8 @@ import "./node_modules/bee-notification/build/Notification.css"
 |onExit|隐藏开始时的钩子函数|function|-|
 |onExiting|隐藏进行时的钩子函数|function|-|
 |onExited|隐藏结束时的钩子函数|function|-|
+|className|类名|string|-|
+|style|样式|object|-|
 
 #### 开发调试
 

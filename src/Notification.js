@@ -5,7 +5,6 @@ import Animate from 'bee-animate';
 import createChainedFunction from 'tinper-bee-core/lib/createChainedFunction';
 import classnames from 'classnames';
 import Notice from './Notice';
-import  elementType from 'tinper-bee-core/lib/elementType';
 
 let seed = 0;
 const now = Date.now();

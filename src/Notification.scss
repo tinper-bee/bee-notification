@@ -1,16 +1,6 @@
 @import "../node_modules/tinper-bee-core/scss/minxin-variables";
 @import "../node_modules/tinper-bee-core/scss/minxin-mixins";
 
-$zIndex-notification: 1000;
-$notification-top: 30px;
-$notification-bottom: 30px;
-$notification-right: 30px;
-$notification-width: 300px;
-$notification-text-margin-right: 15px;
-$default-border-radius: 4px;
-$notice-padding: 15px;
-$notice-background: $gray-darkest;
-$notice-bottom: 15px;
 
 .u-notification{
   position: fixed;
