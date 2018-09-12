@@ -19,7 +19,8 @@ Notification通知不同于操作类型的信息反馈，是一种主动推送�
 ## 使用方法
 
 ```js
-const notification = Notification.newInstance({position: 'bottomRight'});
+let notification = null;
+Notification.newInstance({position: 'bottomRight'}, n => notification = n);
 
 class Demo1 extends Component {
 

@@ -9,7 +9,8 @@ import React, { Component } from 'react';
 import Button from 'bee-button';
 import Notification from '../../src';
 
-const notification = Notification.newInstance({position: 'bottomRight'});
+let notification = null;
+Notification.newInstance({position: 'bottomRight'}, n => notification = n);
 
 class Demo3 extends Component {
     constructor(props){

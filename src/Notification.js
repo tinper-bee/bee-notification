@@ -104,24 +104,33 @@ class Notification extends Component {
 Notification.propTypes = propTypes;
 Notification.defaultProps = defaultProps;
 
-Notification.newInstance = function newNotificationInstance(properties) {
+Notification.newInstance = function newNotificationInstance(properties, callback) {
   const props = properties || {};
   const div = document.createElement('div');
   document.body.appendChild(div);
-  const notification = ReactDOM.render(<Notification {...props} />, div);
-  return {
-    notice(noticeProps) {
-      notification.add(noticeProps);
-    },
-    removeNotice(key) {
-      notification.remove(key);
-    },
-    component: notification,
-    destroy() {
-      ReactDOM.unmountComponentAtNode(div);
-      document.body.removeChild(div);
-    },
-  };
+
+  let called = false;
+  function ref(notification) {
+    if (called) {
+      return;
+    }
+    called = true;
+    callback({
+      notice(noticeProps) {
+        notification.add(noticeProps);
+      },
+      removeNotice(key) {
+        notification.remove(key);
+      },
+      component: notification,
+      destroy() {
+        ReactDOM.unmountComponentAtNode(div);
+        document.body.removeChild(div);
+      },
+    });
+  }
+  ReactDOM.render(<Notification {...props} ref={ref} />, div);
+
 };
 
 

@@ -164,25 +164,33 @@ var Notification = function (_Component) {
 Notification.propTypes = propTypes;
 Notification.defaultProps = defaultProps;
 
-Notification.newInstance = function newNotificationInstance(properties) {
+Notification.newInstance = function newNotificationInstance(properties, callback) {
   var props = properties || {};
   var div = document.createElement('div');
   document.body.appendChild(div);
-  var notification = _reactDom2["default"].render(_react2["default"].createElement(Notification, props), div);
-  return {
-    notice: function notice(noticeProps) {
-      notification.add(noticeProps);
-    },
-    removeNotice: function removeNotice(key) {
-      notification.remove(key);
-    },
 
-    component: notification,
-    destroy: function destroy() {
-      _reactDom2["default"].unmountComponentAtNode(div);
-      document.body.removeChild(div);
+  var called = false;
+  function ref(notification) {
+    if (called) {
+      return;
     }
-  };
+    called = true;
+    callback({
+      notice: function notice(noticeProps) {
+        notification.add(noticeProps);
+      },
+      removeNotice: function removeNotice(key) {
+        notification.remove(key);
+      },
+
+      component: notification,
+      destroy: function destroy() {
+        _reactDom2["default"].unmountComponentAtNode(div);
+        document.body.removeChild(div);
+      }
+    });
+  }
+  _reactDom2["default"].render(_react2["default"].createElement(Notification, _extends({}, props, { ref: ref })), div);
 };
 
 exports["default"] = Notification;
