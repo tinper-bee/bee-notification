@@ -166,7 +166,7 @@ Notification.defaultProps = defaultProps;
 
 Notification.newInstance = function newNotificationInstance(properties, callback) {
   if (typeof callback !== 'function') {
-    throw 'You must introduce callback as the second parameter of Notification.newInstance().';
+    console.error('You must introduce callback as the second parameter of Notification.newInstance().');
     return;
   }
   var props = properties || {};
