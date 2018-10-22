@@ -32,7 +32,7 @@ var propTypes = {
   duration: _propTypes2["default"].number,
   onClose: _propTypes2["default"].func,
   children: _propTypes2["default"].any,
-  color: _propTypes2["default"].oneOf(['light']),
+  color: _propTypes2["default"].oneOf(['info', 'success', 'danger', 'warning', 'light', 'dark', 'news', 'infolight', 'successlight', 'dangerlight', 'warninglight']),
   title: _propTypes2["default"].any
 };
 
@@ -131,7 +131,7 @@ var Notice = function (_React$Component) {
 
 ;
 
-Notice.PropTypes = _propTypes2["default"];
+Notice.propTypes = propTypes;
 Notice.defaultProps = defaultProps;
 
 exports["default"] = Notice;

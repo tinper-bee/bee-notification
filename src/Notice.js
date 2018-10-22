@@ -6,7 +6,7 @@ const propTypes = {
     duration: PropTypes.number,
     onClose: PropTypes.func,
     children: PropTypes.any,
-    color: PropTypes.oneOf(['light']),
+  color: PropTypes.oneOf(['info', 'success', 'danger', 'warning', 'light', 'dark', 'news', 'infolight', 'successlight', 'dangerlight', 'warninglight']),
     title: PropTypes.any
 };
 
@@ -79,7 +79,7 @@ class Notice extends React.Component {
   }
 };
 
-Notice.PropTypes = PropTypes;
+Notice.propTypes = propTypes;
 Notice.defaultProps = defaultProps;
 
 export default Notice;
