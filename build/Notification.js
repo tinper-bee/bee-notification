@@ -26,6 +26,14 @@ var _createChainedFunction = require('tinper-bee-core/lib/createChainedFunction'
 
 var _createChainedFunction2 = _interopRequireDefault(_createChainedFunction);
 
+var _ownerDocument = require('bee-overlay/build/utils/ownerDocument');
+
+var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
+
+var _addEventListener = require('bee-overlay/build/utils/addEventListener');
+
+var _addEventListener2 = _interopRequireDefault(_addEventListener);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -59,12 +67,15 @@ var propTypes = {
   style: _propTypes2["default"].object,
   position: _propTypes2["default"].oneOf(['topRight', 'bottomRight', '']),
   transitionName: _propTypes2["default"].string,
+  keyboard: _propTypes2["default"].bool, // 按esc键是否关闭notice
+  onEscapeKeyUp: _propTypes2["default"].func, // 设置esc键特殊钩子函数
   animation: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].object])
 };
 
 var defaultProps = {
   clsPrefix: 'u-notification',
   animation: 'fade',
+  keyboard: true,
   position: 'topRight'
 };
 
@@ -76,6 +87,20 @@ var Notification = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
+    _this.handleDocumentKeyUp = function (e) {
+      if (_this.props.keyboard && e.keyCode === 27 && _this.state.notices.length) {
+        _this.setState(function (previousState) {
+          previousState.notices.shift();
+          return {
+            notices: previousState.notices
+          };
+        });
+        if (_this.props.onEscapeKeyUp) {
+          _this.props.onEscapeKeyUp(e);
+        }
+      }
+    };
+
     _this.state = {
       notices: []
     };
@@ -84,6 +109,16 @@ var Notification = function (_Component) {
 
     return _this;
   }
+
+  Notification.prototype.componentDidMount = function componentDidMount() {
+    // 给document绑定keyup事件
+    var doc = (0, _ownerDocument2["default"])(this);
+    this._onDocumentKeyupListener = (0, _addEventListener2["default"])(doc, 'keyup', this.handleDocumentKeyUp);
+  };
+
+  Notification.prototype.componentWillUnmount = function componentWillUnmount() {
+    this._onDocumentKeyupListener.remove();
+  };
 
   Notification.prototype.getTransitionName = function getTransitionName() {
     var props = this.props;
@@ -117,6 +152,11 @@ var Notification = function (_Component) {
       };
     });
   };
+
+  /**
+   * 处理绑定在document上的keyup事件
+   */
+
 
   Notification.prototype.render = function render() {
     var _this2 = this,

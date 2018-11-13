@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Animate from 'bee-animate';
 import createChainedFunction from 'tinper-bee-core/lib/createChainedFunction';
+import ownerDocument from 'bee-overlay/build/utils/ownerDocument';
+import addEventListener from 'bee-overlay/build/utils/addEventListener';
 import classnames from 'classnames';
 import Notice from './Notice';
 
@@ -19,12 +21,15 @@ var propTypes = {
     style: PropTypes.object,
     position: PropTypes.oneOf(['topRight', 'bottomRight', '']),
     transitionName: PropTypes.string,
+    keyboard: PropTypes.bool,// 按esc键是否关闭notice
+    onEscapeKeyUp: PropTypes.func,// 设置esc键特殊钩子函数
     animation: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
 var defaultProps = {
     clsPrefix: 'u-notification',
     animation: 'fade',
+    keyboard: true,
     position: 'topRight'
 }
 
@@ -37,6 +42,17 @@ class Notification extends Component {
         this.add = this.add.bind(this);
         this.remove = this.remove.bind(this);
 
+    }
+
+    componentDidMount() {
+      // 给document绑定keyup事件
+      let doc = ownerDocument(this);
+      this._onDocumentKeyupListener =
+        addEventListener(doc, 'keyup', this.handleDocumentKeyUp);
+    }
+
+    componentWillUnmount() {
+      this._onDocumentKeyupListener.remove();
     }
 
     getTransitionName() {
@@ -66,6 +82,23 @@ class Notification extends Component {
         notices: previousState.notices.filter(notice => notice.key !== key),
       };
     });
+  }
+
+  /**
+   * 处理绑定在document上的keyup事件
+   */
+  handleDocumentKeyUp = (e) => {
+    if (this.props.keyboard && e.keyCode === 27 && this.state.notices.length) {
+      this.setState(previousState => {
+        previousState.notices.shift()
+        return {
+          notices: previousState.notices,
+        };
+      });
+      if (this.props.onEscapeKeyUp) {
+        this.props.onEscapeKeyUp(e);
+      }
+    }
   }
 
   render() {
