@@ -35,3 +35,10 @@ Notification通知不同于操作类型的信息反馈，是一种主动推送�
 |style|样式|object|-|
 |keyboard|esc触发关闭|boolean|true|
 |onEscapeKeyUp|响应ESC键时的钩子函数|function|-|
+
+
+#### 已支持的键盘操作
+
+|按键|功能|
+|:---|:----|
+|esc |关闭Notification|

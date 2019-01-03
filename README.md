@@ -88,6 +88,12 @@ import "./node_modules/bee-notification/build/Notification.css"
 |keyboard|esc触发关闭|boolean|true|
 |onEscapeKeyUp|响应ESC键时的钩子函数|function|-|
 
+#### 已支持的键盘操作
+
+|按键|功能|
+|:---|:----|
+|esc |关闭Notification|
+
 #### 开发调试
 
 ```sh
