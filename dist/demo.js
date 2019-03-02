@@ -76,7 +76,7 @@
 	
 	var CARETUP = _react2['default'].createElement('i', { className: 'uf uf-arrow-up' });
 	
-	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(88);var Demo3 = __webpack_require__(89);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认提醒", "code": "/**\n *\n * @title 默认提醒\n * @description\n *\n */\n\nimport React, { Component } from 'react';\nimport { Notification, Button } from 'tinper-bee';\n\nlet notification = null;\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\n\n\nclass Demo1 extends Component {\n\n    simpleFn() {\n      notification.notice({\n        content: <span>这是一个提示</span>,\n        onClose() {\n          console.log('simple close');\n        },\n      });\n    }\n    render () {\n\n        return (\n            <div className=\"demoPadding\">\n                <Button onClick={this.simpleFn}>simple show</Button>\n            </div>\n        )\n    }\n}\n\n\n", "desc": "", "scss_code": ".demoPadding{\n  button {\n    margin: auto 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的提醒", "code": "/**\n *\n * @title 不同颜色的提醒\n * @description 默认提供两种颜色，一黑一白。\n *\n */\n\nimport React, { Component } from 'react';\nimport { Notification, Button } from 'tinper-bee';\n\nlet notification = null;\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\n\nclass Demo2 extends Component {\n\n simpleLight() {\n      notification.notice({\n         title: '通知',\n        content: '明天下午李总召开会议，请您参加',\n        color: 'light'\n      });\n    }\n    simpleDark() {\n         notification.notice({\n            title: '邮箱',\n           content: '您收到一封邮件'\n         });\n       }\n    render () {\n        return (\n            <div className=\"demoPadding\">\n                <Button onClick={this.simpleLight}>light notification</Button>\n                <Button onClick={this.simpleDark} style={{ background: '#404040', color: '#fff' }}>dark notification</Button>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 默认提供两种颜色，一黑一白。", "scss_code": ".demoPadding{\n  button {\n    margin: auto 10px;\n  }\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 可控制的提醒", "code": "/**\n *\n * @title 可控制的提醒\n * @description 通过设置duration:6来设置时间，null为自动控制\n *\n */\n\nimport React, { Component } from 'react';\nimport { Notification, Button } from 'tinper-bee';\n\nlet notification = null;\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\n\nclass Demo3 extends Component {\n    constructor(props){\n        super(props);\n        this.manualClose = this.manualClose.bind(this);\n    }\n closableFn() {\n      notification.notice({\n        content: <span>只可以自动关闭的提示</span>,\n        duration: null,\n        onClose() {\n          console.log('closable close');\n        },\n        duration: 6,\n        closable: false\n      });\n    }\n\n close(key) {\n      notification.removeNotice(key);\n    }\n\n manualClose() {\n      const key = Date.now();\n      notification.notice({\n        content: <div>\n          <p>只可以点击关闭的提示</p>\n          <Button onClick={this.close.bind(this, key)} size=\"sm\" style={{ position: 'absolute', right: 15, bottom: 15}}>知道了</Button>\n        </div>,\n        key,\n        duration: null,\n        closable: false\n      });\n    }\n    render () {\n        return (\n            <div className=\"demoPadding\">\n                <Button colors=\"primary\" onClick={this.closableFn}>自动关闭</Button>\n                <Button colors=\"primary\" onClick={this.manualClose}>手动关闭</Button>\n            </div>\n        )\n    }\n}\n\n\n", "desc": " 通过设置duration:6来设置时间，null为自动控制", "scss_code": ".demoPadding{\n  button {\n    margin: auto 10px;\n  }\n}" }];
+	var Demo1 = __webpack_require__(84);var Demo2 = __webpack_require__(88);var Demo3 = __webpack_require__(89);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 默认提醒", "code": "/**\r\n *\r\n * @title 默认提醒\r\n * @description\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Notification, Button } from 'tinper-bee';\r\n\r\nlet notification = null;\r\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\r\n\r\n\r\nclass Demo1 extends Component {\r\n\r\n    simpleFn() {\r\n      notification.notice({\r\n        content: <span>这是一个提示</span>,\r\n        onClose() {\r\n          console.log('simple close');\r\n        },\r\n      });\r\n    }\r\n    render () {\r\n\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button onClick={this.simpleFn}>simple show</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": "", "scss_code": ".demoPadding{\r\n  button {\r\n    margin: auto 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo2, null), "title": " 不同颜色的提醒", "code": "/**\r\n *\r\n * @title 不同颜色的提醒\r\n * @description 默认提供两种颜色，一黑一白。\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Notification, Button } from 'tinper-bee';\r\n\r\nlet notification = null;\r\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\r\n\r\nclass Demo2 extends Component {\r\n\r\n simpleLight() {\r\n      notification.notice({\r\n         title: '通知',\r\n        content: '明天下午李总召开会议，请您参加',\r\n        color: 'light'\r\n      });\r\n    }\r\n    simpleDark() {\r\n         notification.notice({\r\n            title: '邮箱',\r\n           content: '您收到一封邮件'\r\n         });\r\n       }\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button onClick={this.simpleLight}>light notification</Button>\r\n                <Button onClick={this.simpleDark} style={{ background: '#404040', color: '#fff' }}>dark notification</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 默认提供两种颜色，一黑一白。", "scss_code": ".demoPadding{\r\n  button {\r\n    margin: auto 10px;\r\n  }\r\n}" }, { "example": _react2['default'].createElement(Demo3, null), "title": " 可控制的提醒", "code": "/**\r\n *\r\n * @title 可控制的提醒\r\n * @description 通过设置duration:6来设置时间，null为自动控制\r\n *\r\n */\r\n\r\nimport React, { Component } from 'react';\r\n\nimport { Notification, Button } from 'tinper-bee';\r\n\r\nlet notification = null;\r\nNotification.newInstance({position: 'bottomRight'}, n => notification = n);\r\n\r\nclass Demo3 extends Component {\r\n    constructor(props){\r\n        super(props);\r\n        this.manualClose = this.manualClose.bind(this);\r\n    }\r\n closableFn() {\r\n      notification.notice({\r\n        content: <span>只可以自动关闭的提示</span>,\r\n        duration: null,\r\n        onClose() {\r\n          console.log('closable close');\r\n        },\r\n        duration: 6,\r\n        closable: false\r\n      });\r\n    }\r\n\r\n close(key) {\r\n      notification.removeNotice(key);\r\n    }\r\n\r\n manualClose() {\r\n      const key = Date.now();\r\n      notification.notice({\r\n        content: <div>\r\n          <span>只可以点击关闭的提示</span>\r\n          <Button onClick={this.close.bind(this, key)} size=\"sm\" style={{ position: 'absolute', right: 15, bottom: 15}}>知道了</Button>\r\n        </div>,\r\n        key,\r\n        duration: null,\r\n        closable: false\r\n      });\r\n    }\r\n    render () {\r\n        return (\r\n            <div className=\"demoPadding\">\r\n                <Button colors=\"primary\" onClick={this.closableFn}>自动关闭</Button>\r\n                <Button colors=\"primary\" onClick={this.manualClose}>手动关闭</Button>\r\n            </div>\r\n        )\r\n    }\r\n}\r\n\r\n\r\n", "desc": " 通过设置duration:6来设置时间，null为自动控制", "scss_code": ".demoPadding{\r\n  button {\r\n    margin: auto 10px;\r\n  }\r\n}\r\n.u-notification-notice-description{\r\n  span{\r\n    line-height: 26px;\r\n  }\r\n}" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -5580,6 +5580,16 @@
 	  var documentWidth = documentElement.scrollWidth;
 	  var documentHeight = documentElement.scrollHeight;
 	
+	  // scrollXXX on html is sync with body which means overflow: hidden on body gets wrong scrollXXX.
+	  // We should cut this ourself.
+	  var bodyStyle = window.getComputedStyle(body);
+	  if (bodyStyle.overflowX === 'hidden') {
+	    documentWidth = win.innerWidth;
+	  }
+	  if (bodyStyle.overflowY === 'hidden') {
+	    documentHeight = win.innerHeight;
+	  }
+	
 	  // Reset element position after calculate the visible area
 	  if (element.style) {
 	    element.style.position = originalPosition;
@@ -8571,7 +8581,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	
 	var _react = __webpack_require__(4);
@@ -8605,82 +8615,82 @@
 	
 	var notification = null;
 	_src2['default'].newInstance({ position: 'bottomRight' }, function (n) {
-	  return notification = n;
+	    return notification = n;
 	});
 	
 	var Demo3 = function (_Component) {
-	  _inherits(Demo3, _Component);
+	    _inherits(Demo3, _Component);
 	
-	  function Demo3(props) {
-	    _classCallCheck(this, Demo3);
+	    function Demo3(props) {
+	        _classCallCheck(this, Demo3);
 	
-	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-	    _this.manualClose = _this.manualClose.bind(_this);
-	    return _this;
-	  }
+	        _this.manualClose = _this.manualClose.bind(_this);
+	        return _this;
+	    }
 	
-	  Demo3.prototype.closableFn = function closableFn() {
-	    var _notification$notice;
+	    Demo3.prototype.closableFn = function closableFn() {
+	        var _notification$notice;
 	
-	    notification.notice((_notification$notice = {
-	      content: _react2['default'].createElement(
-	        'span',
-	        null,
-	        '\u53EA\u53EF\u4EE5\u81EA\u52A8\u5173\u95ED\u7684\u63D0\u793A'
-	      ),
-	      duration: null,
-	      onClose: function onClose() {
-	        console.log('closable close');
-	      }
-	    }, _defineProperty(_notification$notice, 'duration', 6), _defineProperty(_notification$notice, 'closable', false), _notification$notice));
-	  };
+	        notification.notice((_notification$notice = {
+	            content: _react2['default'].createElement(
+	                'span',
+	                null,
+	                '\u53EA\u53EF\u4EE5\u81EA\u52A8\u5173\u95ED\u7684\u63D0\u793A'
+	            ),
+	            duration: null,
+	            onClose: function onClose() {
+	                console.log('closable close');
+	            }
+	        }, _defineProperty(_notification$notice, 'duration', 6), _defineProperty(_notification$notice, 'closable', false), _notification$notice));
+	    };
 	
-	  Demo3.prototype.close = function close(key) {
-	    notification.removeNotice(key);
-	  };
+	    Demo3.prototype.close = function close(key) {
+	        notification.removeNotice(key);
+	    };
 	
-	  Demo3.prototype.manualClose = function manualClose() {
-	    var key = Date.now();
-	    notification.notice({
-	      content: _react2['default'].createElement(
-	        'div',
-	        null,
-	        _react2['default'].createElement(
-	          'p',
-	          null,
-	          '\u53EA\u53EF\u4EE5\u70B9\u51FB\u5173\u95ED\u7684\u63D0\u793A'
-	        ),
-	        _react2['default'].createElement(
-	          _beeButton2['default'],
-	          { onClick: this.close.bind(this, key), size: 'sm', style: { position: 'absolute', right: 15, bottom: 15 } },
-	          '\u77E5\u9053\u4E86'
-	        )
-	      ),
-	      key: key,
-	      duration: null,
-	      closable: false
-	    });
-	  };
+	    Demo3.prototype.manualClose = function manualClose() {
+	        var key = Date.now();
+	        notification.notice({
+	            content: _react2['default'].createElement(
+	                'div',
+	                null,
+	                _react2['default'].createElement(
+	                    'span',
+	                    null,
+	                    '\u53EA\u53EF\u4EE5\u70B9\u51FB\u5173\u95ED\u7684\u63D0\u793A'
+	                ),
+	                _react2['default'].createElement(
+	                    _beeButton2['default'],
+	                    { onClick: this.close.bind(this, key), size: 'sm', style: { position: 'absolute', right: 15, bottom: 15 } },
+	                    '\u77E5\u9053\u4E86'
+	                )
+	            ),
+	            key: key,
+	            duration: null,
+	            closable: false
+	        });
+	    };
 	
-	  Demo3.prototype.render = function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: 'demoPadding' },
-	      _react2['default'].createElement(
-	        _beeButton2['default'],
-	        { colors: 'primary', onClick: this.closableFn },
-	        '\u81EA\u52A8\u5173\u95ED'
-	      ),
-	      _react2['default'].createElement(
-	        _beeButton2['default'],
-	        { colors: 'primary', onClick: this.manualClose },
-	        '\u624B\u52A8\u5173\u95ED'
-	      )
-	    );
-	  };
+	    Demo3.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            { className: 'demoPadding' },
+	            _react2['default'].createElement(
+	                _beeButton2['default'],
+	                { colors: 'primary', onClick: this.closableFn },
+	                '\u81EA\u52A8\u5173\u95ED'
+	            ),
+	            _react2['default'].createElement(
+	                _beeButton2['default'],
+	                { colors: 'primary', onClick: this.manualClose },
+	                '\u624B\u52A8\u5173\u95ED'
+	            )
+	        );
+	    };
 	
-	  return Demo3;
+	    return Demo3;
 	}(_react.Component);
 	
 	exports['default'] = Demo3;
