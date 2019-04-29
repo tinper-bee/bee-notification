@@ -38,6 +38,7 @@
  "dependencies": {
   "bee-animate": "latest",
   "bee-button": "latest",
+  "bee-icon": "^1.0.11",
   "bee-overlay": "^1.0.16",
   "classnames": "^2.2.5",
   "tinper-bee-core": "^2.0.14"
