@@ -41,7 +41,7 @@
   "bee-icon": "^1.0.11",
   "bee-overlay": "^1.0.16",
   "classnames": "^2.2.5",
-  "tinper-bee-core": "^2.0.14"
+  "tinper-bee-core": "latest"
  },
  "peerDependencies": {
   "react": "^15.3.0 || ^16.0",
