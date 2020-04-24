@@ -1,3 +1,12 @@
+## [2.0.4](https://github.com/tinper-bee/bee-notification/compare/v2.0.3...v2.0.4) (2020-04-24)
+
+
+### Bug Fixes
+
+* 自动化 ([d9a42ed](https://github.com/tinper-bee/bee-notification/commit/d9a42ed032eb9e44a16d292349efd52908911bae))
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/tinper-bee/bee-notification/compare/v2.0.2...v2.0.3) (2019-09-23)
 
