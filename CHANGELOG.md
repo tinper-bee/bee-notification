@@ -1,3 +1,12 @@
+## [2.0.5](https://github.com/tinper-bee/bee-notification/compare/v2.0.4...v2.0.5) (2020-06-22)
+
+
+### Features
+
+* 新增设置容器api ([8e592e3](https://github.com/tinper-bee/bee-notification/commit/8e592e34e2b00542e9d43c964c46da77a04e9f5c))
+
+
+
 ## [2.0.4](https://github.com/tinper-bee/bee-notification/compare/v2.0.3...v2.0.4) (2020-04-24)
 
 
