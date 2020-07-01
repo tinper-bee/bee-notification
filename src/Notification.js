@@ -127,7 +127,7 @@ class Notification extends Component {
     }
 
     return (
-        <div className={classnames(className,classes)} style={style}>
+        <div className={classnames(classes)} style={style}>
           <Animate transitionName={this.getTransitionName()}>{noticeNodes}</Animate>
         </div>
     );
