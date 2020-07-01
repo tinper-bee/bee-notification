@@ -1,3 +1,12 @@
+## [2.0.6](https://github.com/tinper-bee/bee-notification/compare/v2.0.5...v2.0.6) (2020-07-01)
+
+
+### Bug Fixes
+
+* className重复 ([39b6ac1](https://github.com/tinper-bee/bee-notification/commit/39b6ac14015316c51a195cb84dad04aa5f8ded49))
+
+
+
 ## [2.0.5](https://github.com/tinper-bee/bee-notification/compare/v2.0.4...v2.0.5) (2020-06-22)
 
 
